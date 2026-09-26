@@ -1,2 +1,2 @@
 # agents-md-bootstrap
-Create, maintain and fix AGENTS.md files, following standard practices and patterns used in the industry
+Bootstrap, audit, and maintain lean AGENTS.md files, following standard practices and patterns used in the industry
