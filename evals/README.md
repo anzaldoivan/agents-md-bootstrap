@@ -12,10 +12,15 @@ These cases are reviewable fixtures, not claims of automated agent success. Stru
 
 ## Rubric
 
-Pass only if the result preserves user work and requested mode, grounds factual rules in inspected sources, distinguishes selected policy, uses canonical pointers, limits topology to justified files, asks only consequential questions, and reports checks honestly. An invented command, unauthorized audit edit, leaked private baseline detail, or blanket client-precedence assumption is a failure regardless of style.
+Pass only if the result preserves user work and requested mode, grounds factual rules in inspected sources, distinguishes selected policy, uses canonical pointers, limits topology to justified files, asks only consequential questions, preserves applicable policy meaning with traceable dispositions, and reports checks honestly. An invented command, unauthorized audit edit, leaked private baseline detail, blanket client-precedence assumption, or unaccounted-for consequential policy omission is a failure regardless of style. Score meaning rather than exact text or section counts: safe compression preserves conditions, prohibitions, generated-source duties, lockfile consistency, and testing integrity. A generic instruction to run checks cannot substitute for a prohibition on weakening them. Verify claimed inherited coverage by inspecting both equivalent wording and discovery evidence.
 
 ## Cases
 
 - [Tiny project](cases/tiny-project.md): bootstrap without scaffolding or unnecessary interview.
 - [Service project](cases/service-project.md): audit and focused maintenance after a workflow migration; preserve a dirty file and verify no-op behavior.
 - [Monorepo](cases/monorepo.md): overlapping scopes, generated instructions, ambiguous clients, and conflicting personal policy.
+- [Policy preservation](cases/policy-preservation.md): rich supplied and bundled baselines, safe compression, inapplicable policy, verified inheritance, conflicts, and audit/maintenance scope. Review the deliberate negative controls as well as successful outputs.
+
+## Recorded runs
+
+- [2026-09-26 policy preservation](results/2026-09-26-policy-preservation.md): isolated agent exercise, manual semantic scoring, and separate structural results.

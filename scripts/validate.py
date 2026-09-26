@@ -12,7 +12,7 @@ REQUIRED = (
     'README.md', 'LICENSE', 'AGENTS.md', '.github/workflows/validate.yml',
     'scripts/validate.py', 'evals/README.md',
     'evals/cases/tiny-project.md', 'evals/cases/service-project.md',
-    'evals/cases/monorepo.md',
+    'evals/cases/monorepo.md', 'evals/cases/policy-preservation.md',
     str(SKILL / 'SKILL.md'), str(SKILL / 'assets/baseline-agents.md'),
     *(str(SKILL / 'references' / name) for name in (
         'evidence-policy.md', 'conflict-resolution.md', 'interview-policy.md',

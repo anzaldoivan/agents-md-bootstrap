@@ -16,13 +16,13 @@ Use agents-md-bootstrap to audit our agent instructions; report findings without
 Use agents-md-bootstrap to update agent instructions after our package-manager migration.
 ```
 
-Bootstrap initializes or substantially improves instructions. Audit reports stale facts, duplicates, conflicts, dead rules, excessive scope, generic advice, and missing constraints. Maintain/update makes the smallest evidence-backed change needed after repository evolution. A healthy repository can produce no changes.
+Bootstrap initializes or substantially improves instructions. Audit reports stale facts, duplicates, conflicts, dead rules, excessive scope, generic advice, and missing constraints. Maintain/update makes the smallest evidence-backed change needed after repository evolution. A healthy repository can produce no changes. “Lean” means concise and nonduplicative while preserving applicable obligations, not removing policy meaning to reach a length or section target.
 
 ## How it works
 
 The skill inspects repository structure, executable checks, canonical documentation, and the topology of existing agent instructions before proposing rules. It distinguishes observed facts from selected personal policy and unresolved assumptions. It links to maintained sources instead of copying versions, command catalogs, dependency lists, or directory inventories into `AGENTS.md`.
 
-The [reusable baseline](skills/agents-md-bootstrap/assets/baseline-agents.md) is a portable starting policy, not evidence about your project. Supply a personal baseline with the request to replace it, or select only applicable defaults. Do not copy secrets, machine-specific paths, or private policy references into a shared repository. The skill asks targeted questions only when an unresolved decision would materially change the result.
+The [reusable baseline](skills/agents-md-bootstrap/assets/baseline-agents.md) is a portable starting policy, not evidence about your project. Supply a personal baseline with the request to replace it, or adapt the applicable defaults. Policy preferences do not need proof of existing repository practice. The temporary evidence ledger accounts for retained, merged, inherited, inapplicable, and conflicting obligations; the report explains consequential omissions and verifies any claimed coverage elsewhere. Do not copy secrets, machine-specific paths, or private policy references into a shared repository. The skill asks targeted questions only when an unresolved decision would materially change the result.
 
 One small root file is usually enough. Scoped files require demonstrated local constraints and confirmed client discovery behavior. The skill does not create per-directory instructions, new architecture documents, or tool-specific copies just to fill a template.
 

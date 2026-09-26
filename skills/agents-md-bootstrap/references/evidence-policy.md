@@ -9,10 +9,28 @@ Use a temporary working ledger, not a new committed document:
 | Candidate instruction | Kind | Source and scope | Confidence | Decision |
 | --- | --- | --- | --- | --- |
 | Use the repository check entry point | Observed fact | Actual task definition and CI caller | Verified definition; execution may be untested | Link to owner |
-| Preserve unrelated edits | Selected policy | Supplied or bundled baseline | Explicit preference | Keep only if useful |
+| Preserve unrelated edits | Selected policy | Supplied or bundled baseline | Explicit preference | Retained: preserve unrelated edits |
 | A service requires an external database | Unknown | Incomplete setup documentation | Unverified | Inspect further or ask if consequential |
 
 Distinguish definition inspection from successful execution. A command present in CI is evidence of intended checks, not proof that it succeeds locally. Do not run deployment, destructive, credential-dependent, or externally mutating commands just to establish evidence. Report access limits and partial coverage.
+
+## Policy coverage
+
+For bootstrap, inventory the obligations in the supplied baseline, or the bundled baseline when none is supplied, together with useful existing policy. For audit, name the baseline being evaluated; without one, assess existing policy and repository constraints without treating every bundled default as mandatory. For focused maintenance, trace obligations affected by the patch; report other discovered gaps without expanding the edit.
+
+Extend the temporary ledger with one disposition per obligation, not merely per heading. A compound rule may need multiple entries. Record its source, applicable scope, destination or exclusion reason, and any supporting evidence. Group entries in the report only when each obligation remains traceable. In audit reports, distinguish current coverage or gaps from proposed dispositions; a recommendation to retain a rule is not evidence that it is already present.
+
+| Disposition | Required accounting |
+| --- | --- |
+| Retained | Identify where the obligation survives in the result |
+| Merged | Identify combined wording or pointer and confirm it preserves each obligation, including conditions and prohibitions |
+| Covered by an applicable canonical instruction | Inspect the equivalent rule, record its location and scope, and establish that intended consumers discover it; a filename or presumed client default is insufficient |
+| Inapplicable | Explain the concrete scope or condition that does not apply; distinguish an absent component from a general preventive policy |
+| Conflicting | Identify both rules and their authority, the resolution or pending decision, and any lost coverage; use the conflict procedure |
+
+An explicitly supplied preference needs no evidence that the repository already follows it. Factual additions still require evidence. Generic wording, familiarity, a length target, or lack of a past incident does not make an applicable obligation dispensable. Remove empty headings and compress repetition, not policy meaning. Do not silently strengthen a preference or relax a prohibition while paraphrasing it.
+
+Before delivery, compare every affected source obligation with the actual final instructions and verified inherited coverage. “Run appropriate checks” does not preserve “do not weaken valid checks”; “update the canonical owner” alone does not preserve generated-source regeneration or manifest/lockfile consistency. Resolve unaccounted-for losses before declaring bootstrap complete. Explain consequential omissions, conflicts, and uncertain inherited coverage in the report. Keep private source details out of shared output.
 
 ## Canonical sources
 
