@@ -16,21 +16,27 @@ Distinguish definition inspection from successful execution. A command present i
 
 ## Policy coverage
 
-For bootstrap, inventory the obligations in the supplied baseline, or the bundled baseline when none is supplied, together with useful existing policy. For audit, name the baseline being evaluated; without one, assess existing policy and repository constraints without treating every bundled default as mandatory. For focused maintenance, trace obligations affected by the patch; report other discovered gaps without expanding the edit.
+Read the selected [canonical catalog](production-agents-template.md) and use [policy-accounting.md](policy-accounting.md) to account for every evaluated obligation ID. A supplied baseline replaces bundled defaults. Inventory applicable obligations before drafting output; do not derive the expected set only from what the draft happens to contain.
 
-Extend the temporary ledger with one disposition per obligation, not merely per heading. A compound rule may need multiple entries. Record its source, applicable scope, destination or exclusion reason, and any supporting evidence. Group entries in the report only when each obligation remains traceable. In audit reports, distinguish current coverage or gaps from proposed dispositions; a recommendation to retain a rule is not evidence that it is already present.
+Keep policy, observable repository facts, and human decisions separate. A personal policy needs no evidence of existing practice. Retain applicable meaning, merge only when every requirement survives, and verify inherited content plus actual discovery/scope. Unknown coverage is not proof of inheritance or inapplicability. Conditional exclusions require proportionate inspection of the repository capability; missing tooling does not remove universal validation integrity.
 
-| Disposition | Required accounting |
-| --- | --- |
-| Retained | Identify where the obligation survives in the result |
-| Merged | Identify combined wording or pointer and confirm it preserves each obligation, including conditions and prohibitions |
-| Covered by an applicable canonical instruction | Inspect the equivalent rule, record its location and scope, and establish that intended consumers discover it; a filename or presumed client default is insufficient |
-| Inapplicable | Explain the concrete scope or condition that does not apply; distinguish an absent component from a general preventive policy |
-| Conflicting | Identify both rules and their authority, the resolution or pending decision, and any lost coverage; use the conflict procedure |
+In audit, report actual coverage and uncovered obligations separately from proposed fixes. In focused maintenance, select affected IDs with rationale and report unrelated gaps without changing them. Keep private evidence outside shared artifacts. Before delivery, compare actual final wording with each selected source obligation, including qualifications and exceptions. A structural ledger pass does not establish semantic completeness.
 
-An explicitly supplied preference needs no evidence that the repository already follows it. Factual additions still require evidence. Generic wording, familiarity, a length target, or lack of a past incident does not make an applicable obligation dispensable. Remove empty headings and compress repetition, not policy meaning. Do not silently strengthen a preference or relax a prohibition while paraphrasing it.
+## Validation-gap decisions
 
-Before delivery, compare every affected source obligation with the actual final instructions and verified inherited coverage. “Run appropriate checks” does not preserve “do not weaken valid checks”; “update the canonical owner” alone does not preserve generated-source regeneration or manifest/lockfile consistency. Resolve unaccounted-for losses before declaring bootstrap complete. Explain consequential omissions, conflicts, and uncertain inherited coverage in the report. Keep private source details out of shared output.
+Assess formatting, lint, type/static checks, tests, build validation, and security scanning where applicable by capability and affected scope. Inspect repository task definitions, package scripts, CI invocations, project-owned scripts, executable configuration, and maintained command documentation. A package or config file alone does not establish an invocation. Conflicting owners or required-status claims need investigation, not a guessed command.
+
+| State | Evidence | Result |
+| --- | --- | --- |
+| DETECTED | Inspected sources establish a canonical or clearly owned invocation and applicable scope | Use the verified exact invocation or its canonical pointer; preserve working directory and conditions |
+| AMBIGUOUS | Evidence suggests intended tooling/capability, but canonical invocation, ownership, or policy is unresolved | Explain the evidence and unresolved choice; add no invented command and install nothing |
+| ABSENT | Proportionate inventory and source inspection finds no meaningful capability evidence | Report no repository-defined check found and generate no command; no routine tooling interview or installation recommendation |
+
+Record inspection limits separately; inaccessible evidence does not justify ABSENT. Assess compound commands by the behavior they actually define, not merely their task name. When a project exposes a named package script or task, use its public runner invocation rather than expanding its implementation body. The task definition plus verified runner ownership can establish the invocation even if the complete command is not quoted literally in a file. DETECTED does not imply that the command has been executed or passed. An unavailable environment or failing run changes the execution report, not the detected state. Do not run unsafe or externally mutating checks merely to establish definitions.
+
+Ask a targeted question only if all three hold: evidence suggests intended capability; canonical invocation or policy remains unresolved; resolving it materially affects the requested instructions. Ask about the unresolved requirement or existing owner without seeding an invented command. For example: “Lint tooling exists, but I found no canonical invocation. Should lint be required, and which existing project-owned command is canonical?” Otherwise continue with the assessment and known instructions.
+
+For ABSENT, normal output is “No repository-defined lint check was found; no lint command was generated.” Absence is not automatically a defect. A separately requested engineering-quality assessment can discuss it. Missing or ambiguous tooling never authorizes installing dependencies or changing the quality toolchain. Explicitly authorized toolchain work is outside this skill's normal instruction-maintenance scope. Preserve universal validation and anti-weakening obligations independently of tool availability.
 
 ## Canonical sources
 

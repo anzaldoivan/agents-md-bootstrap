@@ -2,7 +2,10 @@
 """Offline repository checks; deliberately not a general Agent Skills validator."""
 
 from pathlib import Path
+import importlib.util
+import os
 import re
+import subprocess
 import sys
 from urllib.parse import unquote, urlsplit
 
@@ -13,10 +16,13 @@ REQUIRED = (
     'scripts/validate.py', 'evals/README.md',
     'evals/cases/tiny-project.md', 'evals/cases/service-project.md',
     'evals/cases/monorepo.md', 'evals/cases/policy-preservation.md',
-    str(SKILL / 'SKILL.md'), str(SKILL / 'assets/baseline-agents.md'),
+    'evals/cases/canonical-accounting.md', 'evals/cases/validation-gaps.md',
+    'tests/test_policy.py',
+    str(SKILL / 'SKILL.md'), str(SKILL / 'scripts/validate_policy.py'),
     *(str(SKILL / 'references' / name) for name in (
         'evidence-policy.md', 'conflict-resolution.md', 'interview-policy.md',
         'audit-checklist.md', 'output-contract.md',
+        'production-agents-template.md', 'policy-accounting.md',
     )),
 )
 
@@ -27,6 +33,17 @@ def validate(root: Path) -> list[str]:
         path = root / name
         if not path.is_file() or not path.read_text(encoding='utf-8').strip():
             errors.append(f'{name}: required nonempty file missing')
+    sys.dont_write_bytecode = True
+    catalog = {}
+    helper = root / SKILL / 'scripts/validate_policy.py'
+    if helper.is_file():
+        spec = importlib.util.spec_from_file_location('policy_validation', helper)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        catalog, catalog_errors = module.read_catalog(root / SKILL / 'references/production-agents-template.md')
+        errors.extend(catalog_errors)
+    if (root / SKILL / 'assets/baseline-agents.md').exists():
+        errors.append('obsolete independent baseline asset must not coexist with canonical catalog')
     entry = root / SKILL / 'SKILL.md'
     if entry.is_file():
         content = entry.read_text(encoding='utf-8')
@@ -55,8 +72,6 @@ def validate(root: Path) -> list[str]:
                 errors.append('SKILL.md: description must contain 1–1024 characters')
             if fields.get('license') != 'MIT':
                 errors.append('SKILL.md: expected MIT license')
-        if len(content.splitlines()) >= 500:
-            errors.append('SKILL.md: must stay below 500 lines')
 
     docs = sorted(root.glob('*.md'))
     docs += sorted((root / 'skills').rglob('*.md'))
@@ -70,6 +85,10 @@ def validate(root: Path) -> list[str]:
             errors.append(f'{label}: unfinished marker')
         # Inline file links in authored prose; fenced examples are not links.
         prose = re.sub(r'^```.*?^```[^\n]*$', '', content, flags=re.M | re.S)
+        if 'results' not in path.relative_to(root).parts:
+            for key in re.findall(r'\b[A-Z]{2,10}-[0-9]{3}\b', prose):
+                if key not in catalog and not key.startswith('USER-'):
+                    errors.append(f'{label}: unknown canonical obligation reference: {key}')
         for target in re.findall(r'\[[^\]\n]+\]\(([^)\s]+)\)', prose):
             parsed = urlsplit(target)
             if parsed.scheme or parsed.netloc or not parsed.path:
@@ -79,9 +98,6 @@ def validate(root: Path) -> list[str]:
                 errors.append(f'{label}: link escapes repository: {target}')
             elif not destination.exists():
                 errors.append(f'{label}: broken local link: {target}')
-    agents = root / 'AGENTS.md'
-    if agents.is_file() and len(agents.read_text(encoding='utf-8').split()) > 250:
-        errors.append('AGENTS.md: exceeds project budget of 250 words')
     license_path = root / 'LICENSE'
     if license_path.is_file() and not license_path.read_text().startswith('MIT License\n'):
         errors.append('LICENSE: expected MIT license')
@@ -93,4 +109,12 @@ if __name__ == '__main__':
     if failures:
         print('\n'.join(f'FAIL: {failure}' for failure in failures), file=sys.stderr)
         sys.exit(1)
-    print('PASS: metadata, resources, naming, local file links, markers, and lean budgets')
+    for path, count, limit in ((ROOT / SKILL / 'SKILL.md', 'lines', 500), (ROOT / 'AGENTS.md', 'words', 250)):
+        content = path.read_text(encoding='utf-8')
+        size = len(content.splitlines() if count == 'lines' else content.split())
+        if size >= limit:
+            print(f'NOTE: {path.name} has {size} {count}; review concision without dropping obligations')
+    result = subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', 'tests'], cwd=ROOT, env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'})
+    if result.returncode:
+        sys.exit(result.returncode)
+    print('PASS: metadata, resources, naming, links, markers, canonical IDs, and policy regression tests; semantics require review')

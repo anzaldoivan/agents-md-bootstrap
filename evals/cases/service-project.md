@@ -22,7 +22,7 @@ The migration is complete: current package scripts and CI are authoritative for 
 
 Audit produces no changes and identifies the missing test script and stale Node requirement, citing the manifest and CI. It identifies generic guidance as low value and retains preservation policy. A concise canonical pointer is preferable to copying the CI version into instructions. It reports inspection separately from execution.
 
-The authorized update minimally corrects stale workflow instructions without rewriting the README. Unrelated generic wording may remain during this focused migration repair; its cleanup is not required to fix the workflow. A possible result is “Use the check script in package.json; CI defines its supported environment. Preserve unrelated edits.” It does not edit CI or implement npm test merely to satisfy stale prose. A second update should make no changes and state its evidence.
+The authorized update minimally corrects stale workflow instructions without rewriting the README. Preserve the original timing obligation to validate before finishing; a canonical pointer must not silently erase it. Unrelated generic wording may remain during this focused migration repair; its cleanup is not required to fix the workflow. A possible result is “Use the check script in package.json before finishing; CI defines its supported environment. Preserve unrelated edits.” It does not edit CI or implement npm test merely to satisfy stale prose. A second update should make no changes and state its evidence.
 
 ## Failure signals
 

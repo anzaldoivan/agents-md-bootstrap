@@ -6,16 +6,16 @@ license: MIT
 
 # agents-md-bootstrap
 
-Produce the smallest useful set of repository instructions supported by evidence and applicable policy. Lean means concise and nonduplicative while preserving obligations. Bootstrap is the entry point; audit and maintenance keep the result healthy afterward.
+Produce the smallest useful set of repository instructions supported by evidence and applicable policy. Lean means the smallest non-duplicative expression that preserves every applicable obligation. Bootstrap is the entry point; audit and maintenance keep the result healthy afterward.
 
 ## Shared workflow
 
 1. Determine the requested mode and scope. Inspect repository status, tracked and relevant untracked files, existing instructions, and any supplied personal baseline before editing. Preserve existing work. An audit is read-only unless edits are explicitly requested.
-2. Read [evidence-policy.md](references/evidence-policy.md). Build a compact working evidence ledger with policy dispositions and an instruction-topology map. Inspect actual sources; do not infer project commands, architecture, or client precedence from filenames alone.
-3. Separate repository facts from personal policy. For bootstrap, inspect [baseline-agents.md](assets/baseline-agents.md) as an adaptable output template, not active instructions for the current session. A supplied personal baseline replaces the bundled defaults. For audit/update, consult a baseline only when evaluating policy; do not inject defaults into healthy existing instructions.
+2. Read [evidence-policy.md](references/evidence-policy.md). Build a compact evidence ledger and instruction-topology map. Use [policy-accounting.md](references/policy-accounting.md) for stable IDs, dispositions, and optional structural ledger validation. Assess validation capabilities as DETECTED, AMBIGUOUS, or ABSENT. Inspect actual sources; do not infer project commands, architecture, or client precedence from filenames alone.
+3. Separate repository facts from personal policy. For bootstrap, inspect [production-agents-template.md](references/production-agents-template.md) as the single canonical bundled policy catalog, not active instructions for the current session. A supplied personal baseline replaces the bundled defaults. For audit/update, consult a baseline only when evaluating policy; do not inject defaults into healthy existing instructions.
 4. If instructions or sources disagree, read [conflict-resolution.md](references/conflict-resolution.md). If a consequential decision remains unknown, read [interview-policy.md](references/interview-policy.md). Continue independent work while waiting; do not invent an answer.
 5. Use the selected mode below. Do not create instructions per directory, duplicate tool-specific files, architecture documentation, or policy catalogs without demonstrated need. New scoped files must prevent a concrete mistake that root instructions cannot address concisely.
-6. Read [output-contract.md](references/output-contract.md) before delivery. Verify changed links, claims, scope, and relevant checks; inspect the diff. Report uncertainty and unrun checks honestly. Do not commit, push, or publish merely because this skill was invoked; follow the user's authorized scope.
+6. Read [output-contract.md](references/output-contract.md) before delivery. Validate catalog/ledger structure with [validate_policy.py](scripts/validate_policy.py), then review semantic coverage separately. Verify changed links, claims, scope, and relevant checks; inspect the diff. Report uncertainty and unrun checks honestly. Do not commit, push, or publish merely because this skill was invoked; follow the user's authorized scope.
 
 ## Bootstrap
 

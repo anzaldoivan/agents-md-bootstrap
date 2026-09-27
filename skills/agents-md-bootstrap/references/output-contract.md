@@ -4,7 +4,7 @@ Deliver the requested artifact and a compact evidence-backed report. Keep analys
 
 ## Bootstrap
 
-Create or improve only justified instruction files. Report changed paths, the decisions the rules support, canonical sources inspected, the baseline used and its policy dispositions (retained, merged, covered elsewhere, inapplicable, or conflicting), and any material assumption. Explain any new scoped file's concrete purpose and discovery basis. Preserve useful existing content. Group routine retained policies concisely, but identify consequential omissions and their reasons individually; cite inspected equivalent coverage and its applicability when relying on another instruction surface.
+Create or improve only justified instruction files. Report changed paths, the decisions the rules support, canonical sources inspected, the baseline used and its policy dispositions (retained, merged, verified-inherited, inapplicable, conflicting, or uncovered), and any material assumption. Explain any new scoped file's concrete purpose and discovery basis. Preserve useful existing content. Reference stable obligation IDs in the report or external ledger, not generated instructions. Report DETECTED/AMBIGUOUS/ABSENT assessments and inspection limits. Group routine retained policies concisely, but identify consequential omissions and their reasons individually; cite inspected equivalent coverage and its applicability when relying on another instruction surface.
 
 ## Audit
 
@@ -21,6 +21,7 @@ Provide a minimal patch tied to verified repository evolution. State what became
 - Run existing relevant checks when safe and available; distinguish success, failure, and unrun checks. Documentation-only work need not run unrelated application suites.
 - Check that facts and selected policies remain distinct, no secrets or private paths leaked, and no duplicated source of truth or unnecessary file appeared.
 - Compare affected baseline and existing-policy obligations with the final wording and verified inherited coverage; explain consequential omissions and unresolved conflicts. Do not count generic wording as equivalent to specific safeguards.
+- Validate structured accounting with the portable helper, then manually review semantic equivalence and state classification. Do not report full coverage with uncovered obligations or unresolved conflicts.
 - Confirm instructions are lean enough for their demonstrated needs; there is no minimum length or mandatory section count.
 
 Report remaining blockers precisely. Do not label behavior tested when only structural validation ran. Do not install new tools, modify unrelated project configuration, or commit/publish without task authorization.

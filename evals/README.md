@@ -6,7 +6,7 @@ These cases are reviewable fixtures, not claims of automated agent success. Stru
 
 1. Create an isolated temporary repository outside this checkout. Materialize the paths and contents described in a case; create no extra source of truth. Commit the starting state, then apply any stated uncommitted change.
 2. Make the complete `agents-md-bootstrap` skill available. Give the agent only the case's Request and Repository input, withholding Expected behavior and Failure signals.
-3. Capture initial/final status, diff, response, questions, and checks. Do not permit pushes or external mutations. For a blocked question, record the question before supplying any stated follow-up answer.
+3. Capture initial/final status, diff, response, questions, checks, and the temporary ID ledger. Run the portable structural helper against it and review semantics separately. Do not permit pushes or external mutations. For a blocked question, record the question before supplying any stated follow-up answer.
 4. Compare the actual result to the rubric and case expectations. Record agent/client, date, inspected inputs, pass/fail per criterion, and limitations outside the fixture. A manual walkthrough must be labeled as such.
 5. For maintain cases, run the same request again against the resulting state; the second run should be a no-op unless new evidence appears.
 
@@ -20,7 +20,10 @@ Pass only if the result preserves user work and requested mode, grounds factual 
 - [Service project](cases/service-project.md): audit and focused maintenance after a workflow migration; preserve a dirty file and verify no-op behavior.
 - [Monorepo](cases/monorepo.md): overlapping scopes, generated instructions, ambiguous clients, and conflicting personal policy.
 - [Policy preservation](cases/policy-preservation.md): rich supplied and bundled baselines, safe compression, inapplicable policy, verified inheritance, conflicts, and audit/maintenance scope. Review the deliberate negative controls as well as successful outputs.
+- [Canonical accounting](cases/canonical-accounting.md): stable IDs, full accounting, inheritance semantics and maintenance.
+- [Validation gaps](cases/validation-gaps.md): detected, ambiguous, absent, inspection limits, interview thresholds and unauthorized tooling.
 
 ## Recorded runs
 
 - [2026-09-26 policy preservation](results/2026-09-26-policy-preservation.md): isolated agent exercise, manual semantic scoring, and separate structural results.
+- [2026-09-26 canonical policy](results/2026-09-26-canonical-policy.md): 17 isolated runs, initial findings and bounded corrections, ID accounting, validation-state decisions, and separate structural/semantic results.

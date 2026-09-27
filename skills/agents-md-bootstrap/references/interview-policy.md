@@ -9,3 +9,5 @@ Do not ask for facts available in manifests, CI, or existing canonical documenta
 Continue independent inspection or supported edits while awaiting an answer. For a required decision, leave the dependent edit pending. If no answer is available, report the narrow unresolved issue and omit unsupported additions; elapsed time is not approval. Optional stylistic choices may use the existing repository convention with a stated assumption.
 
 Stop interviewing once the remaining uncertainty cannot materially affect the result. A tiny project with clear evidence may need zero questions.
+
+For validation gaps, apply all three question thresholds in [evidence-policy.md](evidence-policy.md): intended capability is evidenced, its invocation/policy is unresolved, and the decision materially affects the requested instructions. ABSENT checks do not trigger routine tool-selection questions. Never seed invented commands or treat a missing tool as installation authorization.
